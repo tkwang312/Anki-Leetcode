@@ -1,14 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext'
 import Sidebar from './Sidebar'
+import Dashboard from './Dashboard'
 
 const Home = () => {
     const { currentUser } = useAuth()
+    const [sidebarOpen, setSidebarOpen] = useState(false)
+    console.log(sidebarOpen)
+
     return (
-        <>
-            <Sidebar />
-            <div className='text-2xl font-bold pt-14'>Hello {currentUser.displayName ? currentUser.displayName : currentUser.email}, you are now logged in.</div>
-        </>
+        <div className='flex'>
+            <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+            <Dashboard sidebarOpen={sidebarOpen}/>
+        </div>
     )
 }
 
