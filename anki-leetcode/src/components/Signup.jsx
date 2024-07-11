@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Navigate, Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { doCreateUserWithEmailAndPassword } from '../auth'
+import { setNewUserDefaultInfo } from '../firestore'
 
 const Register = () => {
 

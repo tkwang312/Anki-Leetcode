@@ -1,6 +1,11 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faLayerGroup } from '@fortawesome/free-solid-svg-icons'
+import { setNewUserDefaultInfo, db, checkExist } from  '../firestore'
+import { auth } from '../firebase'
+
+const handleClick = () => {console.log('xd')}
+
 
 const Dashboard = ({sidebarOpen}) => {
   return (
@@ -30,7 +35,7 @@ const Dashboard = ({sidebarOpen}) => {
                         </a>
                     
                     </li>
-                    <li className="mb-2 rounded hover:shadow hover:bg-purple-500 py-2">
+                    <li className="mb-2 rounded hover:shadow hover:bg-purple-500 py-2" onClick={checkExist(auth, 'Grind75') ?  handleClick : setNewUserDefaultInfo(auth, 'Grind75')}>
                         <a href="" className="px-3">
                             <FontAwesomeIcon className="inline-block w-6 h-6 mr-2" icon={faLayerGroup}/>
                             Grind 75

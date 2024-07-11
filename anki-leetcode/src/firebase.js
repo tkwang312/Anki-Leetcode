@@ -1,6 +1,5 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth'; 
-// import 'firebase/firestore'
 
 
 const firebaseConfig = {
@@ -12,12 +11,6 @@ const firebaseConfig = {
     appId: process.env.REACT_APP_FIREBASE_APP_ID,
     measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
-
-// export const database = {
-//     folders: firestore.collections("folders"),
-//     files: firestore.collections("files"),
-//     getCurrentTimestamp: firebase.firestore.FieldValue.serverTimestamp
-// }
 
 
 const app = initializeApp(firebaseConfig);
