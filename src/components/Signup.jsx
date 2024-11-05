@@ -20,7 +20,9 @@ const Register = () => {
         e.preventDefault()
         if(!isRegistering) {
             setIsRegistering(true)
-            await doCreateUserWithEmailAndPassword(email, password)
+            const credential = await doCreateUserWithEmailAndPassword(email, password)
+            const uid = credential.user.uid;
+            setNewUserDefaultInfo(email)
         }
     }
 

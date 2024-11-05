@@ -2,19 +2,24 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faLayerGroup } from '@fortawesome/free-solid-svg-icons'
 import { setNewUserDefaultInfo, db, checkExist } from  '../firestore'
-import { auth } from '../firebase'
-
-const handleClick = () => {console.log('xd')}
-
+import { Link, useNavigate } from 'react-router-dom'
 
 const Dashboard = ({sidebarOpen}) => {
+    const navigate = useNavigate();
+    const handleGrind75 = () => {
+        navigate('/grind75')
+    }
+    const handleNeetcode150 = () => {
+        navigate('/neetcode150')
+    }
+
   return (
     <div className='h-screen w-screen bg-slate-400'>
         <div className={`${sidebarOpen ? "ml-40" : "ml-16"}`}>
             <h1 className='text-blue-600 font-bold text-xl py-5 px-4'>Home</h1>
             <div className=''>
                 <ul className="mt-3 text-white font-bold">
-                    <li className="mb-2 rounded hover:shadow hover:bg-purple-500 py-2">
+                    <li className="mb-2 rounded hover:shadow hover:bg-purple-500 py-2" onClick={handleNeetcode150}>
                         <a href="" className="px-3 justify-center text-center">
                             <FontAwesomeIcon className="inline-block w-6 h-6 mr-2" icon={faLayerGroup} />
                             Neetcode 150
@@ -35,7 +40,7 @@ const Dashboard = ({sidebarOpen}) => {
                         </a>
                     
                     </li>
-                    <li className="mb-2 rounded hover:shadow hover:bg-purple-500 py-2" onClick={checkExist(auth, 'Grind75') ?  handleClick : setNewUserDefaultInfo(auth, 'Grind75')}>
+                    <li className="mb-2 rounded hover:shadow hover:bg-purple-500 py-2" onClick={handleGrind75}>
                         <a href="" className="px-3">
                             <FontAwesomeIcon className="inline-block w-6 h-6 mr-2" icon={faLayerGroup}/>
                             Grind 75

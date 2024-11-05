@@ -1,12 +1,12 @@
 import Login from "../components/Login";
 import Register from "../components/Signup";
-
 import Header from "../components/Header";
 import Home from "../components/Home";
-import Sidebar from "./Sidebar";
 
 import { AuthProvider } from "../context/AuthContext";
 import { useRoutes } from "react-router-dom";
+import Grind75Card from "./Grind75Card";
+import Neetcode150Card from "./Neetcode150Card";
 
 function App() {
   const routesArray = [
@@ -25,6 +25,14 @@ function App() {
     {
       path: "/home",
       element: <Home />,
+    },
+    {
+      path: "/grind75",
+      element: <Grind75Card />,
+    },
+    {
+      path: "/neetcode150",
+      element: <Neetcode150Card />,
     },
   ];
   let routesElement = useRoutes(routesArray);

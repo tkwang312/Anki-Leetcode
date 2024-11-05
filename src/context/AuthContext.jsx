@@ -14,20 +14,6 @@ export function AuthProvider( {children} ) {
     const [userLoggedIn, setLoggedIn] = useState(false);
     const [loading, setLoading] = useState(true);
 
-
-    // function signup(email, password) {
-    //     //firebase command
-    //     createUserWithEmailAndPassword(auth, email, password)
-    //     .then((userCredential) => { 
-    //         const user = userCredential.user;
-    //         console.log(userCredential)
-    //       })
-    //       .catch((error) => {
-    //         console.log(error)
-    //         // ..
-    //       });
-    // }
-
     useEffect(() => {
         //firebase notifies when a new user is created
         const unsubscribe = onAuthStateChanged(auth, initializeUser);
