@@ -14,45 +14,44 @@ const Dashboard = ({sidebarOpen}) => {
     }
 
   return (
-    <div className='h-screen w-screen bg-slate-400'>
+    <div className='h-screen w-screen bg-slate-200'>
         <div className={`${sidebarOpen ? "ml-40" : "ml-16"}`}>
             <h1 className='text-blue-600 font-bold text-xl py-5 px-4'>Home</h1>
-            <div className=''>
+            <div>
                 <ul className="mt-3 text-white font-bold">
-                    <li className="mb-2 rounded hover:shadow hover:bg-purple-500 py-2" onClick={handleNeetcode150}>
+                    <li className="mb-2 rounded hover:shadow hover:rose-quartz py-2 text-black" onClick={handleNeetcode150}>
                         <a href="" className="px-3 justify-center text-center">
                             <FontAwesomeIcon className="inline-block w-6 h-6 mr-2" icon={faLayerGroup} />
                             Neetcode 150
                         </a>
-
                     </li>
-                    <li className="mb-2 rounded hover:shadow hover:bg-purple-500 py-2">
+                    <li className="mb-2 rounded hover:shadow hover:rose-quartz py-2 text-black">
                         <a href="" className="px-3">
-                            <FontAwesomeIcon className="inline-block w-6 h-6 mr-2" icon={faLayerGroup}/>
+                            <FontAwesomeIcon className="inline-block w-6 h-6 mr-2 " icon={faLayerGroup}/>
                             Neetcode 75
                         </a>
 
                     </li>
-                    <li className="mb-2 rounded hover:shadow hover:bg-purple-500 py-2">
+                    <li className="mb-2 rounded hover:shadow hover:rose-quartz py-2 text-black">
                         <a href="" className="px-3">
                             <FontAwesomeIcon className="inline-block w-6 h-6 mr-2" icon={faLayerGroup}/>
                             Blind 75
                         </a>
                     
                     </li>
-                    <li className="mb-2 rounded hover:shadow hover:bg-purple-500 py-2" onClick={handleGrind75}>
+                    <li className="mb-2 rounded hover:shadow hover:rose-quartz py-2 text-black" onClick={handleGrind75}>
                         <a href="" className="px-3">
                             <FontAwesomeIcon className="inline-block w-6 h-6 mr-2" icon={faLayerGroup}/>
                             Grind 75
                         </a>
                     </li>
-                    <li className="mb-2 rounded hover:shadow hover:bg-purple-500 py-2">
+                    <li className="mb-2 rounded hover:shadow hover:rose-quartz py-2 text-black">
                         <a href="" className="px-3">
                             <FontAwesomeIcon className="inline-block w-6 h-6 mr-2" icon={faLayerGroup}/>
                             Striver
                         </a>
                     </li>
-                    <li className="mb-2 rounded hover:shadow hover:bg-purple-500 py-2">
+                    <li className="mb-2 rounded hover:shadow hover:rose-quartz py-2 text-black">
                         <a href="" className="px-3">
                             <FontAwesomeIcon className="inline-block w-6 h-6 mr-2" icon={faLayerGroup}/>
                             SQL 50

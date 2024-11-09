@@ -18,7 +18,7 @@ const Sidebar = ({sidebarOpen, setSidebarOpen}) => {
     return (
     <div>
         {!sidebarOpen ? (
-        <div className="w-16 bg-purple-300 fixed h-full">
+        <div className="w-16 ultraviolet fixed h-full">
             <ul className="mt-3 text-white font-bold">
                 <li className="mb-2 rounded hover:shadow hover:bg-purple-500 py-2 group" onClick={handleSidebarOpen}>
                     <div className="flex">
@@ -67,7 +67,7 @@ const Sidebar = ({sidebarOpen, setSidebarOpen}) => {
             </ul>
         </div>
         ) : (
-        <div className='w-40 bg-purple-300 fixed h-full'>
+        <div className='w-40 ultraviolet fixed h-full'>
             <ul className="mt-3 text-white font-bold">
                 <li className="mb-2 rounded hover:shadow hover:bg-purple-500 py-2" onClick={handleSidebarClose}>
                     <a href="" className="px-3 justify-center text-center">
@@ -90,6 +90,13 @@ const Sidebar = ({sidebarOpen, setSidebarOpen}) => {
                     </a>
                 </li>
             </ul>
+            {/* <div>
+                <ul>
+                    <li class
+                <Link className='flex text-sm text-blue-600 underline' to={'/login'}>Login</Link>
+                <Link className='flex text-sm text-blue-600 underline' to={'/register'}>Register New Account</Link>
+                </ul>
+            </div> */}
         </div>
         )}
     </div>

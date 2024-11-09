@@ -38,8 +38,8 @@ function App() {
   let routesElement = useRoutes(routesArray);
   return (
     <AuthProvider>
+      <div className="w-full h-screen flex flex-col">{routesElement}</div>
       <Header />
-      <div className="w-full h-screen flex flex-col my-20">{routesElement}</div>
     </AuthProvider>
   );
 }

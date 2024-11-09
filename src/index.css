@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.pastel-blue {
+    background: #C5D3E8
+}
+
+.lavender-blush {
+    background: #F5E6E8
+}
+
+.ultraviolet {
+    background: #585279
+}
+
+.rose-quartz2 {
+    background: #967AA1
+}
+
+.thisle {
+    background: #C0B4D4
+}
