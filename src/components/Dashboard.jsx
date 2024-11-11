@@ -1,7 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus, faLayerGroup } from '@fortawesome/free-solid-svg-icons'
-import { setNewUserDefaultInfo, db, checkExist } from  '../firestore'
 import { Link, useNavigate } from 'react-router-dom'
 
 const Dashboard = ({sidebarOpen}) => {

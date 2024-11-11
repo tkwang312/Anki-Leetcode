@@ -1,21 +1,22 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { doc, collection, getDocs, query, where, updateDoc } from "firebase/firestore";
 import { auth } from '../firebase'
 import { db } from '../firestore'
+import Sidebar from './Sidebar'
 
 const Neetcode150Card = () => {
 
   const colRef = collection(db, 'Neetcode150')
   const q = query(colRef, where('email', '==', auth.currentUser.email))
 
-
+  const [sidebarOpen, setSidebarOpen] = useState(false)
   const [link, setLink] = useState('')
   const [name, setName] = useState('')
   const [diff, setDiff] = useState(3)
 
   const handleNext = () => {
-    getDocs(q).then(function(querySnapshot) {
-      querySnapshot.forEach(function(docSnapshot){
+    getDocs(q).then(function (querySnapshot) {
+      querySnapshot.forEach(function (docSnapshot) {
         const d = docSnapshot.data().data;
         d[0]['Priority'] += diff * 2
         d.sort((a, b) => a.Priority - b.Priority)
@@ -26,7 +27,7 @@ const Neetcode150Card = () => {
           email: auth.currentUser.email,
           data: d
         }
-        
+
         updateDoc(doc(db, 'Neetcode150', docSnapshot.id), new_data)
       })
     })
@@ -35,25 +36,25 @@ const Neetcode150Card = () => {
   function handleRadio(changeEvent) {
     const selectedOption = changeEvent.target.value
 
-    if(selectedOption === 'veasy'){
+    if (selectedOption === 'veasy') {
       setDiff(5)
     }
-    if(selectedOption === 'easy'){
+    if (selectedOption === 'easy') {
       setDiff(4)
     }
-    if(selectedOption === 'medium'){
+    if (selectedOption === 'medium') {
       setDiff(3)
     }
-    if(selectedOption === 'hard'){
+    if (selectedOption === 'hard') {
       setDiff(2)
     }
-    if(selectedOption === 'vhard'){
+    if (selectedOption === 'vhard') {
       setDiff(1)
     }
   }
 
-  getDocs(q).then(function(querySnapshot) {
-    querySnapshot.forEach(function(docSnapshot){
+  getDocs(q).then(function (querySnapshot) {
+    querySnapshot.forEach(function (docSnapshot) {
       const d = docSnapshot.data().data;
       d.sort((a, b) => a.Priority - b.Priority)
       setName(d[0]['Name'])
@@ -63,56 +64,46 @@ const Neetcode150Card = () => {
         email: auth.currentUser.email,
         data: d
       }
-      
+
       updateDoc(doc(db, 'Neetcode150', docSnapshot.id), new_data)
     })
   })
 
   console.log(diff)
   return (
-    <div className='bg-slate-200'>
-      <div className='flex justify-center w-screen h-screen py-5 bg-white text-4xl'>
-        <div className='relative w-3/4 h-3/4 rounded-xl shadow-xl px-5 py-5'>
-          <div className='text-center py-5'>
-            <h1 class>Name: {name}</h1>
-            <h1>Link: <a href={link} className='text-blue-500 underline underline-offset-1'> link </a></h1>
-            <br />
-            <br />
-            <br />
-            <br />
-            <h1>Difficulty (select one)</h1>
-            <div className="flex justify-center scale-150 text-2xl py-2">
-              <div className='px-3'>
-                <input type='radio' name='diff' value='veasy' id='veasy' onChange={handleRadio}/>
-                <label htmlFor='veasy'> 1</label>
-              </div>
-              <div className='px-3'>
-                <input type='radio' name='diff' value='easy' id='easy' onChange={handleRadio}/>
-                <label htmlFor='easy'> 2</label>
-              </div>
-              <div className='px-3'>
-                <input type='radio' name='diff' value='medium' id='medium' onChange={handleRadio}/>
-                <label htmlFor='medium'> 3</label>
+    <div>
+      <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+        <div className="w-96 bg-white rounded-lg shadow-lg p-8 transform transition-transform duration-500 hover:rotate-2 hover:shadow-2xl">
+          <div className="text-center mb-6">
+            <h2 className="text-xl font-semibold">Problem Name</h2>
+            <p className="text-lg text-blue-600 underline">
+              <a href={link} target="_blank" rel="noopener noreferrer">{name}</a>
+            </p>
+          </div>
 
-              </div>
-              <div className='px-3'>
-                <input type='radio' name='diff' value='hard' id='hard' onChange={handleRadio}/>
-                <label htmlFor='hard'> 4</label>
-              </div>
-              <div className='px-3'>
-                <input type='radio' name='diff'value='vhard' id='vhard'  onChange={handleRadio}/>
-                <label htmlFor='vhard'> 5</label>
-              </div>
-
-            </div>
-            <div className='relative center py-5'>
-              <button onClick={handleNext} className='text-black font-medium rounded-lg rounded-xl shadow-l bg-purple-200 px-5'>Next</button>
+          <div className="text-center my-4">
+            <h3 className="text-md font-medium mb-2">Difficulty</h3>
+            <div className="flex justify-center space-x-4">
+              {['veasy', 'easy', 'medium', 'hard', 'vhard'].map((level, index) => (
+                <label key={level} className="flex flex-col items-center cursor-pointer">
+                  <input type="radio" name="diff" value={level} onChange={handleRadio} />
+                  <span className="text-sm mt-1">{index + 1}</span>
+                </label>
+              ))}
             </div>
           </div>
+
+          <button
+            onClick={handleNext}
+            className="w-full mt-8 py-2 bg-purple-500 text-white font-semibold rounded-lg transition-transform transform hover:scale-105"
+          >
+            Next
+          </button>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Neetcode150Card

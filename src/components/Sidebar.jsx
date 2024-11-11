@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowCircleUp, faBars, faHouse, faPerson, faPhone, faUserCircle } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = ({sidebarOpen, setSidebarOpen}) => {
-//   const [sidebarOpen, setSidebarOpen] = useState(true);
+    const navigator = useNavigate()
 
     function handleSidebarOpen(e){
         e.preventDefault()
@@ -14,6 +15,12 @@ const Sidebar = ({sidebarOpen, setSidebarOpen}) => {
         e.preventDefault()
         setSidebarOpen(false);
     };
+
+    function handleHome(e){
+        e.preventDefault()
+        navigator("/home")
+    }
+    
 
     return (
     <div>
@@ -35,7 +42,7 @@ const Sidebar = ({sidebarOpen, setSidebarOpen}) => {
                         </div>
                     </div>
                 </li>
-                <li className="mb-2 rounded hover:shadow hover:bg-purple-500 py-2 group">
+                <li className="mb-2 rounded hover:shadow hover:bg-purple-500 py-2 group" onClick={handleHome}>
                     <div className="flex">
                         <a href="" className="px-4">
                             <FontAwesomeIcon className="inline-block w-6 h-6 mr-2" icon={faHouse}/>
@@ -76,7 +83,7 @@ const Sidebar = ({sidebarOpen, setSidebarOpen}) => {
                     </a>
 
                 </li>
-                <li className="mb-2 rounded hover:shadow hover:bg-purple-500 py-2">
+                <li className="mb-2 rounded hover:shadow hover:bg-purple-500 py-2" onClick={handleHome}>
                     <a href="" className="px-3">
                         <FontAwesomeIcon className="inline-block w-6 h-6 mr-2" icon={faHouse}/>
                         Home
@@ -90,13 +97,6 @@ const Sidebar = ({sidebarOpen, setSidebarOpen}) => {
                     </a>
                 </li>
             </ul>
-            {/* <div>
-                <ul>
-                    <li class
-                <Link className='flex text-sm text-blue-600 underline' to={'/login'}>Login</Link>
-                <Link className='flex text-sm text-blue-600 underline' to={'/register'}>Register New Account</Link>
-                </ul>
-            </div> */}
         </div>
         )}
     </div>
